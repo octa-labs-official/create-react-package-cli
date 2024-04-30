@@ -8,7 +8,7 @@ import gitClone from 'git-clone';
 import fs from 'fs';
 import path from 'path';
 
-program.version('1.0.6')
+program.version('1.0.7')
   .argument('<project-name>', 'Create a new React component project')
   .action((projectName) => {
     console.log(chalk.green(`Creating a new React component project: ${projectName}`));
