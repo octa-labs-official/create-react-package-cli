@@ -5,6 +5,10 @@
   "bin": {
     "create-react-package": "./cli.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octa-labs-official/create-react-package-cli"
+  },
   "keywords": [],
   "author": "Octa Labs",
   "license": "ISC",
