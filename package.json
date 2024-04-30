@@ -1,6 +1,6 @@
 {
   "name": "@octa-labs/create-react-package",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "bin": {
     "create-react-package": "./cli.js"
