@@ -3,7 +3,3 @@ node_modules
 
 .vscode
 .env
-
-# Ignore npm package locks
-package-lock.json
-yarn.lock
