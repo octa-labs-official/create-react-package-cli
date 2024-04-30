@@ -1,4 +1,4 @@
-# create-react-package
+# Create React Package
 
 `create-react-package` is a CLI tool designed to simplify the creation of new React component projects. It sets up a new project by cloning a predefined template, customizing the `package.json`, and installing dependencies, making it easy to start developing immediately.
 
