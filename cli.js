@@ -1,11 +1,11 @@
-#!/usr/bin/env node
-
 import chalk from 'chalk';
 import { program } from 'commander';
 import { exec } from 'child_process';
 import inquirer from 'inquirer';
 import gitClone from 'git-clone';
 import fs from 'fs';
+import path from 'path';
+import rimraf from 'rimraf';
 
 program.version('1.0.0')
   .argument('<project-name>', 'Create a new React component project')
@@ -47,7 +47,7 @@ program.version('1.0.0')
         // Update package.json with user inputs
         const packageJsonPath = `${projectName}/package.json`;
         const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-        packageJson.name = projectName;  // Directly use projectName as the package name
+        packageJson.name = projectName;
         packageJson.version = answers.version;
         packageJson.repository.url = answers.repository;
         packageJson.keywords = answers.keywords.split(',').map(keyword => keyword.trim());
@@ -56,6 +56,12 @@ program.version('1.0.0')
         packageJson.bugs.url = `${answers.repository}/issues`;
         packageJson.homepage = `${answers.repository}#readme`;
         fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+
+        // Remove the .git directory
+        const gitDirPath = path.join(projectName, '.git');
+        rimraf(gitDirPath, () => {
+          console.log(chalk.yellow('Removed .git directory.'));
+        });
 
         // Install dependencies
         console.log(chalk.green('Installing dependencies...'));
