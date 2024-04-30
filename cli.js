@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import chalk from 'chalk';
 import { program } from 'commander';
 import { exec } from 'child_process';
@@ -5,13 +7,12 @@ import inquirer from 'inquirer';
 import gitClone from 'git-clone';
 import fs from 'fs';
 import path from 'path';
-import rimraf from 'rimraf';
 
 program.version('1.0.0')
   .argument('<project-name>', 'Create a new React component project')
   .action((projectName) => {
     console.log(chalk.green(`Creating a new React component project: ${projectName}`));
-    
+
     inquirer.prompt([
       {
         type: 'input',
@@ -59,7 +60,11 @@ program.version('1.0.0')
 
         // Remove the .git directory
         const gitDirPath = path.join(projectName, '.git');
-        rimraf(gitDirPath, () => {
+        fs.rm(gitDirPath, { recursive: true, force: true }, (err) => {
+          if (err) {
+            console.error(chalk.red('Failed to remove .git directory:'), err);
+            return;
+          }
           console.log(chalk.yellow('Removed .git directory.'));
         });
 
