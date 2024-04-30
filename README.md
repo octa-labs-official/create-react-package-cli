@@ -13,19 +13,11 @@
 
 Before you begin, ensure you have Node.js installed on your system. You can download it from [Node.js official website](https://nodejs.org/).
 
-## Installation
-
-You do not need to install `create-react-package` globally. You can run it directly using `npx`:
-
-```bash
-npx create-react-package <project-name>
-```
-
 ## Usage
 To create a new React component project, run:
 
 ```bash
-npx create-react-package my-react-component
+npx @octa-labs/create-react-package my-react-component
 ```
 
 Follow the interactive prompts to enter:
